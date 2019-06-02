@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 const Course = props =>(
-    <option value={props.course.code}>{props.course.name}</option>
+    <option value={props.course._id}>{props.course.name}</option>
 )
 
 const Subject = props =>(
@@ -69,6 +69,14 @@ class ViewSubjects extends Component{
         }).catch(err=>{
             console.log(err);
         })
+
+        axios.get("http://localhost:8080/course/amount/"+this.state.course).then(resolve=>{
+            console.log(resolve);
+
+        }).catch(err=>{
+            console.log(err);
+        })
+
     }
 
     getSub(){

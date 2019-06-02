@@ -12,7 +12,7 @@ CourseRoute.get('/allCourses',(req,res)=>{
 });
 
 CourseRoute.post('/oneCourse',(req,res)=>{
-    Course.findOne({code : req.body.code},function(err,course){
+    Course.findOne({ _id : req.body.code},function(err,course){
         if(err){
             res.status(500).send({message:err});
         }else{

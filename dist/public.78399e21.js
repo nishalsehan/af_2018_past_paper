@@ -32092,7 +32092,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var Course = function Course(props) {
   return _react.default.createElement("option", {
-    value: props.course.code
+    value: props.course._id
   }, props.course.name);
 };
 
@@ -32169,6 +32169,12 @@ function (_Component) {
         _this3.setState({
           subjects: resolve.data.data.subjects
         });
+      }).catch(function (err) {
+        console.log(err);
+      });
+
+      _axios.default.get("http://localhost:8080/course/amount/" + this.state.course).then(function (resolve) {
+        console.log(resolve);
       }).catch(function (err) {
         console.log(err);
       });
@@ -32386,7 +32392,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11619" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
