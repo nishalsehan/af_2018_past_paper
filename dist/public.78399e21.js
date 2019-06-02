@@ -32116,7 +32116,8 @@ function (_Component) {
     _this.state = {
       course: '',
       courses: [],
-      subjects: []
+      subjects: [],
+      total: ''
     };
     return _this;
   }
@@ -32175,6 +32176,10 @@ function (_Component) {
 
       _axios.default.get("http://localhost:8080/course/amount/" + this.state.course).then(function (resolve) {
         console.log(resolve);
+
+        _this3.setState({
+          total: "Total fee for course: " + resolve.data
+        });
       }).catch(function (err) {
         console.log(err);
       });
@@ -32217,7 +32222,7 @@ function (_Component) {
         className: "card-body"
       }, _react.default.createElement("table", {
         className: "table"
-      }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, _react.default.createElement("td", null, "Name"), _react.default.createElement("td", null, "Description"), _react.default.createElement("td", null, "Amount"))), _react.default.createElement("tbody", {
+      }, _react.default.createElement("caption", null, this.state.total), _react.default.createElement("thead", null, _react.default.createElement("tr", null, _react.default.createElement("td", null, "Name"), _react.default.createElement("td", null, "Description"), _react.default.createElement("td", null, "Amount"))), _react.default.createElement("tbody", {
         className: "tab-content"
       }, this.getSub()))));
     }
@@ -32392,7 +32397,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11619" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12332" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

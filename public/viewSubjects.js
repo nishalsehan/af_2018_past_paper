@@ -25,7 +25,8 @@ class ViewSubjects extends Component{
         this.state = {
             course:'',
             courses:[],
-            subjects:[]
+            subjects:[],
+            total:''
         }
     }
 
@@ -72,6 +73,9 @@ class ViewSubjects extends Component{
 
         axios.get("http://localhost:8080/course/amount/"+this.state.course).then(resolve=>{
             console.log(resolve);
+            this.setState({
+                total:"Total fee for course: "+resolve.data
+            })
 
         }).catch(err=>{
             console.log(err);
@@ -101,6 +105,7 @@ class ViewSubjects extends Component{
                 </div>
                 <div className='card-body'>
                     <table className='table'>
+                        <caption>{this.state.total}</caption>
                         <thead>
                         <tr>
                             <td>Name</td>
@@ -111,6 +116,7 @@ class ViewSubjects extends Component{
                         <tbody  className='tab-content'>
                         {this.getSub()}
                         </tbody>
+
                     </table>
                 </div>
             </div>
